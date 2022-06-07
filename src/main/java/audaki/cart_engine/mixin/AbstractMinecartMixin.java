@@ -31,7 +31,9 @@ import java.util.function.Supplier;
 // Mixin info for Forge grabbed from https://darkhax.net/2020/07/mixins
 @Mixin(value = AbstractMinecart.class, priority = 500) // lower value, higher priority - apply first so other mods can still mixin
 public abstract class AbstractMinecartMixin extends Entity {
-    public AbstractMinecartMixin(EntityType<?> pEntityType, Level pLevel) { super(pEntityType, pLevel); }
+    public AbstractMinecartMixin(EntityType<?> pEntityType, Level pLevel) {
+        super(pEntityType, pLevel);
+    }
 
     @Shadow
     protected abstract boolean isRedstoneConductor(BlockPos pos);
@@ -210,7 +212,7 @@ public abstract class AbstractMinecartMixin extends Entity {
         double maxHorizontalMovementPerTick = calculateMaxHorizontalMovementPerTick.get();
         double maxHorizontalMomentumPerTick = Math.max(maxHorizontalMovementPerTick * 5.0D, 4.2D);
 
-//        if (this.hasPassengers() && this.getVelocity().horizontalLength() > 0.09) {
+//        if (this.isVehicle()() && this.getDeltaMovement().horizontalDistance() > 0.09) {
 //            System.out.println(maxHorizontalMovementPerTick + " - " + maxHorizontalMomentumPerTick);
 //        }
 
@@ -218,8 +220,8 @@ public abstract class AbstractMinecartMixin extends Entity {
         this.setDeltaMovement(new Vec3(l * h / j, velocity.y, l * i / j));
 
 
-//        if (this.hasPassengers() && this.getVelocity().horizontalLength() > 0.09 && this.world.getServer() != null && this.world.getServer().getTicks() % 3 == 0) {
-//            System.out.println("Momentum: " + (int) this.getX() + " -> " + this.getVelocity().horizontalLength() + " m/t");
+//        if (this.isVehicle()() && this.getDeltaMovement().horizontalDistance() > 0.09 && this.level.getServer() != null && this.level.getServer().getTickCount() % 3 == 0) {
+//            System.out.println("Momentum: " + (int) this.getX() + " -> " + this.getDeltaMovement().horizontalDistance() + " m/t");
 //        }
 
         Entity entity = this.getFirstPassenger();
