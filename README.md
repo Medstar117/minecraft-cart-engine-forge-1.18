@@ -1,7 +1,7 @@
 # Audaki Cart Engine
 
 ## Brief
-Audaki Cart Engine offers well-designed, properly balanced, competitive, and viable cart-based passenger transportation.
+Audaki Cart Engine offers a well-designed, properly balanced, competitive, and viable cart-based passenger transportation.
 
 This mod is a server-sided (and SSP) mod based originally on Fabric, but has recently been ported to Forge.
 
